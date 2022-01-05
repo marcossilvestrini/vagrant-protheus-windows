@@ -67,7 +67,7 @@ StartPath: \system\
 local_files: Ctree
 localdbextension: .dtc
 rpodb: Top
-rpolanguage: portuguese
+rpolanguage: multi
 rpoversion: 120
 ThreadMemWarning: 1000
 ThreadMemStep: 100

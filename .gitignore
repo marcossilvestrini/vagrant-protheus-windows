@@ -2,15 +2,12 @@
 **/.vscode
 **/.log
 **/.vagrant
-workspace.code-vagrant-protheus.code-workspace
+workspace.code-workspace
 
 #security
 **/authorized_keys
 **/*.pub
 **/*.ppk
-**/pk_protheus
-**/private_key
-
 #erp
 **/provisioning/**/*.rpo
 **/provisioning/**/*.zip*
@@ -20,6 +17,3 @@ workspace.code-vagrant-protheus.code-workspace
 **/*.retry
 **/*/__pycache__
 **/*.pyc
-
-# Install
-linux/install

@@ -1,6 +1,4 @@
 - hosts: protheus
-  vars_files:
-    - roles/jenkins/vars/main.yml
   roles:
     - common
     - license
@@ -9,5 +7,3 @@
     - rpo
     - appserver
     - smartclient
-    # Optional
-    # - jenkins

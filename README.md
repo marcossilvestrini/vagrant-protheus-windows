@@ -62,7 +62,7 @@ RAM: 4GB
 ## Stack Version
 
 Database: PostgreSQL 10.15\
-Protheus: 12.1.27
+Protheus: 12.1.33
 
 ## Install Vagrant
 
@@ -160,10 +160,6 @@ This role configure binaries for:\
 - slaves
 - soap
 - rest
-
-### jenkins
-
-Optional role for create and configure jenkins node in host
 
 ## Bugs
 

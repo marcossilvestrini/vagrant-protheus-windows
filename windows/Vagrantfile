@@ -16,7 +16,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vbguest.auto_update = false
   config.vbguest.no_remote = true
 
-  # VM Protheus
+  # VM PostgreSQL
   config.vm.define "protheus_db"  do |protheus_db|
 
     # Box metadata location and box name
@@ -27,13 +27,16 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
 
     # VARIABLE HOSTNAME
-    APP_NAME= "ol8-postgresql"
+   DB_NAME= "ol8-postgresql"
 
     # HOSTNAME
-    protheus_db.vm.hostname = APP_NAME
+    protheus_db.vm.hostname =DB_NAME
 
     # NETWORK
-    protheus_db.vm.network "public_network" ,ip: "192.168.0.132",mode: "bridge"
+    protheus_db.vm.network "public_network" ,ip: "192.168.0.132" ,mode: "bridge" ,bridge: [
+    "ens32",
+    "Marvell AQtion 5Gbit Network Adapter"
+    ]
 
     # MOUNTS
     protheus_db.vm.synced_folder ".", "/vagrant", disabled: true
@@ -42,7 +45,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     # PROVIDER
     protheus_db.vm.provider "virtualbox" do |vb|
       vb.linked_clone = true
-      vb.name = APP_NAME
+      vb.name =DB_NAME
       vb.memory = 4096
       vb.cpus = 3
     end
@@ -63,7 +66,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   end
 
-  # VM AD
+  # VM Protheus
   config.vm.define "protheus_app" do |protheus_app|
 
     # Box Windows Server 2019 Standart
@@ -71,7 +74,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     protheus_app.vbguest.auto_update = true
 
     # VARIABLE HOSTNAME
-    VM_DC_NAME= "win2019-protheus"
+    APP_NAME= "win2019-protheus"
 
     # Set Others parameters for windows vm
     protheus_app.vm.guest = :windows
@@ -86,10 +89,13 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     protheus_app.winrm.basic_auth_only = true
 
     # HOSTNAME
-    protheus_app.vm.hostname = VM_DC_NAME
+    protheus_app.vm.hostname = APP_NAME
 
     # NETWORK
-    protheus_app.vm.network "public_network" ,ip: "192.168.0.133"
+    protheus_app.vm.network "public_network" ,ip: "192.168.0.133" ,mode: "bridge",bridge: [
+    "ens32",
+    "Marvell AQtion 5Gbit Network Adapter"
+    ]
 
     # MOUNTS
     protheus_app.vm.synced_folder ".", "/vagrant", disabled: true
@@ -98,7 +104,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     # PROVIDER
     protheus_app.vm.provider "virtualbox" do |vb|
       vb.linked_clone = true
-      vb.name = VM_DC_NAME
+      vb.name = APP_NAME
       vb.memory = 4096
       vb.cpus = 3
     end

@@ -6,5 +6,5 @@
 
 - name: Copy RPO File
   win_copy:
-    src: tttp120.rpo
-    dest: '{{ rpo_path }}\tttp120.rpo'
+    src: tttm120.rpo
+    dest: '{{ rpo_path }}\tttm120.rpo'

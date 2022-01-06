@@ -1,9 +1,9 @@
 - hosts: protheus
   roles:
-    - common
-    - license
-    - dbaccess
-    - dictionary
+    # - common
+    # - license
+    # - dbaccess
+    # - dictionary
     - rpo
     - appserver
     - smartclient
